@@ -1,6 +1,13 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 
+import 'react-notion-x/src/styles.css'
+
+
+import 'prismjs/themes/prism-tomorrow.css'
+
+
+import 'katex/dist/katex.min.css'
 export default function Home() {
   return (
     <div className={styles.page}>

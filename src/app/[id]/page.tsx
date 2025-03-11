@@ -7,16 +7,16 @@ async function fetchNotionData(id: string) {
 
     try {
         const notion = new NotionAPI();
-        const recordMap = await notion.getPage(id);
-        return recordMap;
+        return await notion.getPage(id);
     } catch (error) {
         console.error("Notion API Error:", error);
         return null;
     }
 }
 
-export default async function NotionPage({ params }: { params: { id: string } }) {
-    const { id } = params;
+export type paramsType = Promise<{ id: string }>;
+export default async function NotionPage(props: { params: paramsType }) {
+    const { id } = await props.params;
 
     const recordMap = await fetchNotionData(id);
 
